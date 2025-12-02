@@ -25,6 +25,20 @@ A Django project for sending emails via a JSON API.
     python manage.py runserver
     ```
 
+## Request Logging
+
+All API requests are automatically logged to the database with the following information:
+- **User**: Authenticated user (or Anonymous for failed auth)
+- **Endpoint**: The API endpoint called
+- **Method**: HTTP method (POST, GET, etc.)
+- **Request Data**: The request body
+- **Response Status**: HTTP status code (200, 401, 500, etc.)
+- **Response Time**: Time taken to process the request (in milliseconds)
+- **IP Address**: Client IP address
+- **Timestamp**: When the request was made
+
+Logs can be viewed in the Django admin panel under "API Request Logs".
+
 ## API Documentation
 
 ### Authentication

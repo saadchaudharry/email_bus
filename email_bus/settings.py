@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'email_app.middleware.APILoggingMiddleware',
 ]
 
 ROOT_URLCONF = 'email_bus.urls'
