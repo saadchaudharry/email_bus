@@ -27,6 +27,39 @@ A Django project for sending emails via a JSON API.
 
 ## API Documentation
 
+### Authentication
+
+All API endpoints require authentication using either **Token-based** or **Basic** authentication.
+
+#### Token Authentication
+
+1. Create a user and generate a token via Django admin or shell:
+   ```bash
+   python manage.py createsuperuser
+   python manage.py shell
+   ```
+   ```python
+   from django.contrib.auth.models import User
+   from email_app.models import APIToken
+   user = User.objects.get(username='your_username')
+   token = APIToken.objects.create(user=user)
+   print(token.token)  # Copy this token
+   ```
+
+2. Use the token in your requests:
+   ```bash
+   curl -H "Authorization: Token YOUR_TOKEN_HERE" ...
+   ```
+
+#### Basic Authentication
+
+Use your Django username and password:
+```bash
+curl -u username:password ...
+```
+
+### API Endpoints
+
 The API exposes Django's email functionality via HTTP POST requests.
 
 ### Send Mail

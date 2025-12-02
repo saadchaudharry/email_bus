@@ -2,8 +2,10 @@ import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import send_mail, EmailMessage
+from .decorators import api_auth_required
 
 @csrf_exempt
+@api_auth_required
 def send_mail_view(request):
     if request.method == 'POST':
         try:
@@ -23,7 +25,9 @@ def send_mail_view(request):
             return JsonResponse({'error': str(e)}, status=500)
     return JsonResponse({'error': 'Invalid request method'}, status=405)
 
+
 @csrf_exempt
+@api_auth_required
 def email_message_view(request):
     if request.method == 'POST':
         try:
